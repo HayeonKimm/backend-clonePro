@@ -3,15 +3,13 @@ const app = express();
 const router = express.Router();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const multer = require("multer");
+// const multer = require("multer");
 const passport = require("passport");
 const passportConfig = require("./passport");
 require("dotenv").config();
 passportConfig();
 const session = require("express-session");
 const User = require("./schemas/users");
-const usersRouter = require("./routes/users");
-const boardsRouter = require("./routes/boards");
 const authRouter = require("./routes/auth");
 
 mongoose.connect("mongodb://localhost:27017/test", {
@@ -35,7 +33,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-app.use("/api", [usersRouter, boardsRouter]);
+
 app.use("/auth", authRouter);
 
 app.listen(3000, () => {
