@@ -14,7 +14,7 @@ const usersRouter = require("./routes/users");
 const boardsRouter = require("./routes/boards");
 const authRouter = require("./routes/auth");
 
-mongoose.connect("mongodb://localhost/hanghae99_week4HW", {
+mongoose.connect("mongodb://localhost:27017/test", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -38,8 +38,8 @@ app.use(session({
 app.use("/api", [usersRouter, boardsRouter]);
 app.use("/auth", authRouter);
 
-app.listen(8080, () => {
-  console.log("서버가 켜졌어어요.");
+app.listen(3000, () => {
+  console.log("3000 포트 서버가 켜졌어요.");
 });
 
 module.exports = app;

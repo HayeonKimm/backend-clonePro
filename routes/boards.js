@@ -5,7 +5,7 @@ const router = express.Router();
 const { upload } = require('./upload');
 
 //게시글 생성(로그인시 가능)
-router.post('/boards', authMiddleware, upload.single('imgUrl'), async (req, res) => {
+router.post('/boards', authMiddleware, async (req, res) => {
     console.log(req.file);
     try {
         const {name} = res.locals.user;

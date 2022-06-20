@@ -19,7 +19,7 @@ router.get(
    }),
    // kakaoStrategy에서 성공한다면 콜백 실행
    (req, res) => {
-      res.redirect('/');
+      res.redirect('/api/postings');
    },
 );
 
