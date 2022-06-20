@@ -49,7 +49,7 @@
     socket.on('send message', (data) => {
         const messageList = document.getElementById('form-control');
         const chatItem = document.createElement('li');
-        chatItem.textContent = data.user + ': ' + data.message;
+        chatItem.textContent = data.user + ' 🦄 ' + data.message;
         messageList.appendChild(chatItem);
         window.scrollTo(0, document.body.scrollHeight);
     });

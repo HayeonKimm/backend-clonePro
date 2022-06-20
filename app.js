@@ -14,17 +14,20 @@ const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 const postsRouter = require('./routes/posts');
 const companyRouter = require('./routes/company');
-// const socketRouter = require('./socket');
-const { Server } = require('socket.io');
+// const SocketIO = require('./socket');
+// const { Server } = require('socket.io');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger_output');
 const http = require('http');
 const server = http.createServer(app);
-const io = new Server(server);
-
-
-
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+// SocketIO(server);
 connect();
 
 
@@ -48,14 +51,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', [usersRouter, commentsRouter, postsRouter, companyRouter, socketRouter]);
 
 
-// app.get('/', (req, res) => {
-//   res.send('헬로 월드');
-// });
+app.get('/', (req, res) => {
+  res.send('헬로 월드');
+});
 
 app.get('/chat', (req, res) => {
   res.sendFile(__dirname + '/chat.html');
 });
 io.on('connection', (socket) => {
+  // socket.send("hihi");
+
   socket.on('disconnect', () => {
     io.emit('send message', {
       message: `${socket.username} 님께서 채팅창을 떠났습니다. ${createdAt}`,
@@ -72,7 +77,7 @@ io.on('connection', (socket) => {
     socket.username = usr;
     io.emit('send message', {
       message: `${socket.username} 님이 채팅에 참여하셨습니다.`,
-      user: '(',
+      user: 'Welcome!',
     });
   });
 });

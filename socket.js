@@ -1,24 +1,28 @@
 // const express = require('express');
-// // const app = express();
+// const app = express();
 
 // const { Server } = require('socket.io');
-// // console.log(Server)
-// const router = express.Router();
-// const io = new Server(server, {
-//   cors: {
-//       origin: '*',
-//       methods: ['GET', 'POST'],
-//   }});
-//   console.log(router);
-// // console.log(io)
-// const moment = require("moment");
-// require("moment-timezone");
-// moment.tz.setDefault("Asia/seoul")
-// const createdAt = moment().format("HH:mm");
-// console.log("현재 시각은 "+createdAt + " 입니다.")
+// // // console.log(Server)
+// // const router = express.Router();
+// module.exports = (server) => {
+//   const io = new Server(server, {
+//       cors: {
+//           origin: '*',
+//           methods: ['GET', 'POST'],
+//       },
+//       pingInterval: 10000,
+//       pingTimeout: 5000,
+//   });
+// //   console.log(router);
+// // // console.log(io)
+// // const moment = require("moment");
+// // require("moment-timezone");
+// // moment.tz.setDefault("Asia/seoul")
+// // const createdAt = moment().format("HH:mm");
+// // console.log("현재 시각은 "+createdAt + " 입니다.")
 
 // app.get('/', (req, res) => {
-//   res.sendFile(__dirname + './chat.html');
+//   res.sendFile(__dirname + '/chat.html');
 // });
 
 // io.on('connection', (socket) => {
@@ -43,4 +47,4 @@
 //   });
 // });
 
-// module.exports = router;
+// }
